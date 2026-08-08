@@ -30,12 +30,6 @@ US Letter, use `letterpaper` instead.
 latexmk -pdf resume.tex
 ```
 
-Or directly with pdflatex (run twice so references resolve):
-
-```bash
-pdflatex resume.tex
-```
-
 Clean up build artefacts:
 
 ```bash
