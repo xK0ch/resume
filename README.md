@@ -5,25 +5,19 @@ turn builds on https://github.com/sb2nov/resume.
 
 ## Requirements
 
-Building the PDF requires a TeX distribution. On Arch Linux:
+Building the PDF requires a TeX distribution. On Arch Linux, two packages are
+enough:
 
 ```bash
-sudo pacman -S texlive-basic texlive-latex texlive-latexrecommended texlive-latexextra texlive-fontsrecommended texlive-binextra
+sudo pacman -S texlive-meta texlive-langgerman
 ```
 
-`texlive-binextra` provides `latexmk`, while `texlive-latexextra` provides
-`titlesec`, `enumitem`, `fancyhdr` and others. Alternatively install the full
-meta package: `sudo pacman -S texlive-meta`.
-
-German hyphenation (the `babel` package with the `ngerman` option) additionally
-requires the German language pack:
-
-```bash
-sudo pacman -S texlive-langgerman
-```
-
-Without this pack, comment out the line `\usepackage[ngerman]{babel}` in
-`resume.tex`, otherwise the build fails with "Unknown option 'ngerman'".
+- `texlive-meta` pulls in the full TeX Live installation, including `latexmk`
+  and all packages used here (`titlesec`, `enumitem`, `fancyhdr`, ...).
+- `texlive-langgerman` provides German hyphenation, required by the `babel`
+  package with the `ngerman` option. Without it, the build fails with
+  "Unknown option 'ngerman'"; in that case comment out the line
+  `\usepackage[ngerman]{babel}` in `resume.tex`.
 
 ## Format
 
@@ -47,21 +41,3 @@ Clean up build artefacts:
 ```bash
 latexmk -c
 ```
-
-## In IntelliJ IDEA
-
-1. Open the `resume` folder in IntelliJ (File > Open).
-2. Install the **TeXiFy IDEA** plugin (Settings > Plugins > Marketplace, search
-   for "TeXiFy"). It provides syntax highlighting, autocompletion and a compile
-   button.
-3. For an in-IDE PDF preview, also install the **PDF Viewer** plugin.
-4. A run button (green triangle) from TeXiFy appears at the top of `resume.tex`;
-   it builds and displays the PDF.
-
-## Editing
-
-The contact details (address, phone, email, website, LinkedIn, GitHub) live in
-the `\begin{center}` block right after `\begin{document}`. The content sections
-(experience, tech stack, personal details, education, further qualifications)
-follow below. The `\resume...` commands at the top of the file are helper macros
-for the consistent layout.
