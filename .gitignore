@@ -1,0 +1,19 @@
+# LaTeX build artefacts
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
+# behalte das fertige PDF NICHT im Repo (optional entfernen)
+# *.pdf
+
+# IDE
+.idea/
