@@ -1,0 +1,236 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+% Adapted for: Fynn Koch (English version)
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Fynn Koch} \\ \vspace{3pt}
+    \small
+    Kopperpahler Allee 74, 24119 Kronshagen, Germany \\ \vspace{2pt}
+    +49 176 63349871 $|$
+    \href{mailto:mail@fynn-koch.de}{\underline{mail@fynn-koch.de}} $|$
+    \href{https://fynn-koch.de}{\underline{fynn-koch.de}} \\ \vspace{2pt}
+    \href{https://www.linkedin.com/in/fynn-koch-913516311/}{\underline{linkedin.com/in/fynn-koch}} $|$
+    \href{https://github.com/xK0ch}{\underline{github.com/xK0ch}}
+\end{center}
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {IT Consultant}{08/2025 -- 02/2026}
+      {ojuto consulting GmbH}{}
+      \resumeItemListStart
+        \resumeItem{Consulting in the customer service domain}
+        \resumeItem{Development of custom software solutions for clients}
+        \resumeItem{Migration of a legacy help center to a new system}
+        \resumeItem{Introduction of automated processes within the company}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineer}{04/2025 -- 07/2025}
+      {T2med}{}
+      \resumeItemListStart
+        \resumeItem{Development of medical practice software}
+        \resumeItem{Implementation of legally mandated features (e.g. electronic patient record, ePA)}
+        \resumeItem{Development of backend functionality in Java}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineer}{05/2023 -- 03/2025}
+      {EWERK Digital GmbH}{}
+      \resumeItemListStart
+        \resumeItem{Technical lead of an international team building a Software Development Kit (SDK)}
+        \resumeItem{Two-week trip to Vietnam to set up the team on-site}
+        \resumeItem{Technical and organizational team lead: sprint planning, ticket management and technical point of contact}
+        \resumeItem{Aligning requirements and priorities with the client and creating technical concepts}
+        \resumeItem{Documenting the existing platform and building a sample application demonstrating all features}
+        \resumeItem{Code reviews of all frontend and backend pull requests to ensure quality}
+        \resumeItem{Setting up microservices and configuring CI/CD pipelines with Concourse CI}
+        \resumeItem{Took over as training supervisor (IT specialist, application development), including mentoring two apprentices}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Junior Software Engineer}{08/2021 -- 04/2023}
+      {EWERK Digital GmbH}{}
+      \resumeItemListStart
+        \resumeItem{Development of several web-based applications in the critical infrastructure (KRITIS) sector}
+        \resumeItem{Building applications based on a microservice architecture}
+        \resumeItem{Full-stack development with Java and TypeScript}
+        \resumeItem{Backend development with Spring Boot, Hibernate, Flyway, PostgreSQL and JUnit}
+        \resumeItem{Frontend development with Angular, RxJS, NgRx and Testing Library}
+        \resumeItem{Agile project work using Scrum}
+        \resumeItem{Version control with Git}
+        \resumeItem{Working with Atlassian Bitbucket, Confluence and Jira}
+        \resumeItem{Development with IntelliJ IDEA}
+        \resumeItem{Participation in client meetings including presenting newly developed features}
+        \resumeItem{Designing and implementing a company-wide unified Java code formatting standard}
+        \resumeItem{Organizing several hackathons for the software crew}
+        \resumeItem{Supporting apprentices with technical questions}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, JavaScript, TypeScript, Rust} \\
+     \textbf{Frameworks}{: Spring, Angular} \\
+     \textbf{Libraries}{: Hibernate, Flyway, RxJS, NgRx} \\
+     \textbf{Databases}{: PostgreSQL, MariaDB, H2} \\
+     \textbf{Tools}{: Git, Docker, IntelliJ IDEA, Jenkins, Concourse CI, Bitbucket, Confluence, Jira}
+    }}
+ \end{itemize}
+
+
+%-----------PERSONAL-----------
+\section{Personal}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Date of birth}{: July 20, 1996 in Kiel} \\
+     \textbf{Nationality}{: German} \\
+     \textbf{Driver's license}{: Category B} \\
+     \textbf{Languages}{: German (native), English (fluent)}
+    }}
+ \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {AEVO train-the-trainer course}{06/2023}
+      {Chamber of Industry and Commerce (IHK) Leipzig}{}
+    \resumeSubheading
+      {IT Specialist for Application Development (apprenticeship)}{07/2019 -- 07/2021}
+      {EWERK Digital GmbH}{}
+    \resumeSubheading
+      {IT Specialist for System Integration (apprenticeship)}{08/2018 -- 06/2019}
+      {alpha2000 GmbH}{}
+    \resumeSubheading
+      {Abitur (German university entrance qualification)}{07/2016}
+      {Gymnasium Kronshagen}{}
+  \resumeSubHeadingListEnd
+
+
+%-----------ADDITIONAL-----------
+\section{Additional}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Trainer certificate (AEVO)}{07/2023}
+      {}{}
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
