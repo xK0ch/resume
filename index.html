@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fynn Koch - Resume</title>
+  <meta name="description" content="Resume / Lebenslauf of Fynn Koch, available in English and German." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .title h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.5px;
+    }
+    .title p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      background: #1e2433;
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      padding: 0.2rem;
+    }
+    .lang-toggle button {
+      border: none;
+      background: none;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .lang-toggle button[aria-pressed='true'] {
+      background: #4f7aff;
+      color: #0f1117;
+    }
+    .lang-toggle button:focus-visible {
+      outline: 2px solid #7dd3fc;
+      outline-offset: 2px;
+    }
+
+    .download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #cbd5e1;
+      text-decoration: none;
+      background: #1e2433;
+      border: 1px solid #2d3748;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .download:hover {
+      border-color: #4f7aff;
+      color: #f8fafc;
+    }
+    .download:focus-visible {
+      outline: 2px solid #7dd3fc;
+      outline-offset: 2px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    .viewer {
+      width: 100%;
+      height: 80vh;
+      min-height: 480px;
+      border: 1px solid #2d3748;
+      border-radius: 12px;
+      background: #1e2433;
+      overflow: hidden;
+    }
+    .viewer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .hint {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: #64748b;
+      text-align: center;
+    }
+    .hint a { color: #7dd3fc; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+    footer a { color: #64748b; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
+
+    @media (max-width: 640px) {
+      header { justify-content: center; text-align: center; }
+      .title { width: 100%; }
+      .viewer { height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="title">
+    <h1>Fynn Koch</h1>
+    <p id="subtitle">Resume</p>
+  </div>
+  <div class="controls">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" id="btn-en" aria-pressed="true">EN</button>
+      <button type="button" id="btn-de" aria-pressed="false">DE</button>
+    </div>
+    <a class="download" id="download" href="/resume_en.pdf" download>
+      Download PDF
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="viewer">
+    <iframe id="pdf" src="/resume_en.pdf" title="Resume PDF"></iframe>
+  </div>
+  <p class="hint">
+    Trouble viewing the embedded PDF?
+    <a id="open-link" href="/resume_en.pdf" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
+  </p>
+</main>
+
+<footer>
+  <p>&copy; 2026 Fynn Koch &middot; <a href="https://fynn-koch.de">fynn-koch.de</a></p>
+</footer>
+
+<script>
+  const variants = {
+    en: { file: '/resume_en.pdf', subtitle: 'Resume', htmlLang: 'en' },
+    de: { file: '/resume_de.pdf', subtitle: 'Lebenslauf', htmlLang: 'de' },
+  };
+
+  const pdf = document.getElementById('pdf');
+  const download = document.getElementById('download');
+  const openLink = document.getElementById('open-link');
+  const subtitle = document.getElementById('subtitle');
+  const btnEn = document.getElementById('btn-en');
+  const btnDe = document.getElementById('btn-de');
+
+  function setLang(lang) {
+    const v = variants[lang];
+    if (!v) return;
+
+    pdf.src = v.file;
+    download.setAttribute('href', v.file);
+    openLink.setAttribute('href', v.file);
+    subtitle.textContent = v.subtitle;
+    document.documentElement.lang = v.htmlLang;
+
+    btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+    btnDe.setAttribute('aria-pressed', String(lang === 'de'));
+
+    try {
+      const url = new URL(window.location);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState(null, '', url);
+    } catch (_) { /* ignore */ }
+  }
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnDe.addEventListener('click', () => setLang('de'));
+
+  // Initial language: ?lang= param wins, otherwise browser preference, default EN.
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get('lang');
+  const preferred = (navigator.language || 'en').toLowerCase().startsWith('de') ? 'de' : 'en';
+  setLang(variants[requested] ? requested : preferred);
+</script>
+
+</body>
+</html>
