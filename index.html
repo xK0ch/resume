@@ -167,7 +167,7 @@
 
 <main>
   <div class="viewer">
-    <iframe id="pdf" src="/resume_en.pdf" title="Resume PDF"></iframe>
+    <iframe id="pdf" src="/resume_en.pdf#navpanes=0&pagemode=none" title="Resume PDF"></iframe>
   </div>
   <p class="hint">
     Trouble viewing the embedded PDF?
@@ -185,6 +185,8 @@
     de: { file: '/resume_de.pdf', subtitle: 'Lebenslauf', htmlLang: 'de' },
   };
 
+  const VIEWER_PARAMS = '#navpanes=0&pagemode=none';
+
   const pdf = document.getElementById('pdf');
   const download = document.getElementById('download');
   const openLink = document.getElementById('open-link');
@@ -196,7 +198,7 @@
     const v = variants[lang];
     if (!v) return;
 
-    pdf.src = v.file;
+    pdf.src = v.file + VIEWER_PARAMS;
     download.setAttribute('href', v.file);
     openLink.setAttribute('href', v.file);
     subtitle.textContent = v.subtitle;
