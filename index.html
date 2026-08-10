@@ -131,6 +131,8 @@
     }
     .hint a { color: #7dd3fc; }
 
+    .mobile-open { display: none; }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -143,7 +145,23 @@
     @media (max-width: 640px) {
       header { justify-content: center; text-align: center; }
       .title { width: 100%; }
-      .viewer { height: 70vh; }
+      .viewer { display: none; }
+      .hint { display: none; }
+      .mobile-open {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        background: #1e2433;
+        border: 1px solid #2d3748;
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+      .mobile-open:active { border-color: #4f7aff; }
+      .mobile-open-icon { font-size: 2rem; line-height: 1; }
+      .mobile-open-text { display: flex; flex-direction: column; gap: 0.2rem; }
+      .mobile-open-text strong { color: #f8fafc; font-size: 1.05rem; }
+      .mobile-open-text span { color: #94a3b8; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -169,6 +187,13 @@
   <div class="viewer">
     <iframe id="pdf" src="/resume_en.pdf#navpanes=0&pagemode=none" title="Resume PDF"></iframe>
   </div>
+  <a class="mobile-open" id="mobile-open" href="/resume_en.pdf" target="_blank" rel="noopener noreferrer">
+    <span class="mobile-open-icon" aria-hidden="true">&#128196;</span>
+    <span class="mobile-open-text">
+      <strong>Open resume</strong>
+      <span>Tap to view the full PDF</span>
+    </span>
+  </a>
   <p class="hint">
     Trouble viewing the embedded PDF?
     <a id="open-link" href="/resume_en.pdf" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
@@ -190,6 +215,7 @@
   const pdf = document.getElementById('pdf');
   const download = document.getElementById('download');
   const openLink = document.getElementById('open-link');
+  const mobileOpen = document.getElementById('mobile-open');
   const subtitle = document.getElementById('subtitle');
   const btnEn = document.getElementById('btn-en');
   const btnDe = document.getElementById('btn-de');
@@ -201,6 +227,7 @@
     pdf.src = v.file + VIEWER_PARAMS;
     download.setAttribute('href', v.file);
     openLink.setAttribute('href', v.file);
+    mobileOpen.setAttribute('href', v.file);
     subtitle.textContent = v.subtitle;
     document.documentElement.lang = v.htmlLang;
 
@@ -217,7 +244,6 @@
   btnEn.addEventListener('click', () => setLang('en'));
   btnDe.addEventListener('click', () => setLang('de'));
 
-  // Initial language: ?lang= param wins, otherwise browser preference, default EN.
   const params = new URLSearchParams(window.location.search);
   const requested = params.get('lang');
   const preferred = (navigator.language || 'en').toLowerCase().startsWith('de') ? 'de' : 'en';
